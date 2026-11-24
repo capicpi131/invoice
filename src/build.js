@@ -57,6 +57,25 @@ const invoices = [
     footerL: 'Terima kasih atas kepercayaan Ibu Edha',
     stamp: true,
   },
+  {
+    // Invoice kosong (template) memakai logo & warna brand dari repo sunari. Isi data lalu build ulang.
+    file: 'INV-SUNARI-TEMPLATE.pdf',
+    logo: 'logo-sunari-driftwood.png',
+    accent: '#A67C64',
+    ink: '#5A3E31',
+    meta: [['Kategori', '&nbsp;'], ['No. Invoice', '&nbsp;'], ['Tanggal', '&nbsp;'], ['Jatuh Tempo', '&nbsp;']],
+    to: ['<b>&nbsp;</b>', '&nbsp;', '&nbsp;'],
+    from: ['<b>SunaRi Beach Resort Selayar</b>', ...seller.addr],
+    head: ['Deskripsi', 'Harga Satuan', 'Qty', 'Total'],
+    rows: [['&nbsp;', '', '', ''], ['&nbsp;', '', '', ''], ['&nbsp;', '', '', ''], ['&nbsp;', '', '', '']],
+    totalLabel: 'Total',
+    total: 'Rp',
+    pay: ['Transfer Bank: BRI', 'No. Rek: 025701011852534', 'A.N. A A GEDE EKA PUTRA'],
+    payTitle: 'Informasi Pembayaran',
+    terms: null,
+    footerL: 'Terima kasih telah memilih SunaRi',
+    stamp: false,
+  },
 ];
 
 function html(d) {
@@ -106,13 +125,14 @@ h2{font-family:Playfair;font-style:italic;font-weight:500;font-size:17pt;text-tr
 .foot{position:absolute;left:15mm;right:15mm;bottom:10mm;display:flex;justify-content:space-between;border-top:.2mm solid #bbb;padding-top:3.5mm;font-size:6.5pt;letter-spacing:.1em;text-transform:uppercase;color:#666}
 .dense h1{font-size:64pt}.dense .meta{margin-top:5mm}.dense .parties{margin-top:3mm}.dense .blk{margin-bottom:4mm}.dense .rule{margin-bottom:4mm}.dense .logo{width:58mm}.dense table{margin-top:2mm}.dense td{padding:3mm}.dense .extra{margin-top:5mm}.dense .bottom{margin-top:6mm}.dense .terms{margin-top:4mm}.dense .terms ol{font-size:7.5pt;line-height:1.5}.dense h2{font-size:15pt;margin-bottom:3mm}.dense .sign em{margin-bottom:10mm}
 .stamp{position:absolute;left:28mm;top:160mm;border:1.2mm solid #1a7f37;color:#1a7f37;font-weight:800;font-size:28pt;letter-spacing:.2em;padding:2mm 7mm;transform:rotate(-12deg);opacity:.8;border-radius:3mm}
+${d.accent ? `.logo{width:50mm;margin-top:2mm}body{color:${d.ink}}.page{border-color:${d.accent};outline-color:${d.accent}}th,.tot,.rule,.extra .last,.sign .ln{border-color:${d.accent}}.foot{border-color:${d.accent}}.meta i,.sub{color:${d.accent}}` : ''}
 </style></head><body><div class="page${d.terms ? ' dense' : ''}">
 <div class="top"><h1>Invoice</h1><div class="meta">${d.meta.map(([k, v]) => `<div><i>${k}</i><span>${v}</span></div>`).join('')}</div></div>
 ${d.sub ? `<div class="sub">${d.sub}</div>` : ''}
 <div class="parties"><div style="margin-top:4mm">
 <div class="blk"><label>Kepada:</label><div>${d.to.join('<br>')}</div></div><div class="rule"></div>
 <div class="blk"><label>Dari:</label><div>${d.from.join('<br>')}</div></div></div>
-<img class="logo" src="${A('logo.png')}"></div>
+<img class="logo" src="${A(d.logo || 'logo.png')}"></div>
 <table><thead><tr>${d.head.map((h) => `<th>${h}</th>`).join('')}</tr></thead><tbody>
 ${d.rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>
 <div class="tot"><span>${d.totalLabel}</span><span>${d.total}</span></div>
