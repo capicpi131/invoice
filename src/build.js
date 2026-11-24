@@ -68,9 +68,9 @@ function html(d) {
 @font-face{font-family:Mont;src:url(${A('Montserrat.ttf')});font-weight:100 900}
 @page{size:A4;margin:0}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:210mm;height:296mm;overflow:hidden}
+html,body{width:210mm;height:296mm;overflow:hidden;background:#fff}body{padding:6mm}
 body{font-family:Mont,sans-serif;font-size:9.5pt;color:#111;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.page{position:relative;width:210mm;height:296mm;padding:14mm 18mm;border:.35mm solid #111;outline:.2mm solid #999;outline-offset:-2.2mm}
+.page{position:relative;width:198mm;height:284mm;padding:11mm 15mm;border:.35mm solid #111;outline:.2mm solid #999;outline-offset:-2.2mm}
 .top{display:flex;justify-content:space-between;align-items:flex-start}
 h1{font-family:Pinyon;font-weight:400;font-size:78pt;line-height:1;margin-top:2mm}
 .meta{margin-top:8mm;font-size:9pt}
@@ -81,7 +81,7 @@ h1{font-family:Pinyon;font-weight:400;font-size:78pt;line-height:1;margin-top:2m
 .parties{display:flex;justify-content:space-between;margin-top:8mm}
 .blk{display:flex;gap:9mm;margin:0 0 8mm 14mm;font-size:9.5pt;line-height:1.55}
 .blk label{width:18mm;font-weight:600;letter-spacing:.15em;font-size:8pt;text-transform:uppercase;padding-top:.6mm}
-.rule{width:100mm;border-top:.3mm solid #111;margin:0 0 8mm 14mm}
+.rule{width:84mm;border-top:.3mm solid #111;margin:0 0 8mm 14mm}
 .logo{width:68mm;height:auto;margin-top:6mm}
 table{width:100%;border-collapse:collapse;margin-top:6mm}
 th{font-weight:600;font-size:8pt;letter-spacing:.14em;text-transform:uppercase;padding:4mm 3mm;border-top:.3mm solid #111;border-bottom:.3mm solid #111}
@@ -103,9 +103,9 @@ h2{font-family:Playfair;font-style:italic;font-weight:500;font-size:17pt;text-tr
 .sign small{display:block;margin-top:1.5mm;font-size:7.5pt;color:#666;letter-spacing:.15em;text-transform:uppercase}
 .terms{margin-top:6mm}
 .terms ol{padding-left:6mm;font-size:8pt;line-height:1.6}
-.foot{position:absolute;left:18mm;right:18mm;bottom:14mm;display:flex;justify-content:space-between;border-top:.2mm solid #bbb;padding-top:3.5mm;font-size:6.5pt;letter-spacing:.1em;text-transform:uppercase;color:#666}
+.foot{position:absolute;left:15mm;right:15mm;bottom:10mm;display:flex;justify-content:space-between;border-top:.2mm solid #bbb;padding-top:3.5mm;font-size:6.5pt;letter-spacing:.1em;text-transform:uppercase;color:#666}
 .dense h1{font-size:64pt}.dense .meta{margin-top:5mm}.dense .parties{margin-top:3mm}.dense .blk{margin-bottom:4mm}.dense .rule{margin-bottom:4mm}.dense .logo{width:58mm}.dense table{margin-top:2mm}.dense td{padding:3mm}.dense .extra{margin-top:5mm}.dense .bottom{margin-top:6mm}.dense .terms{margin-top:4mm}.dense .terms ol{font-size:7.5pt;line-height:1.5}.dense h2{font-size:15pt;margin-bottom:3mm}.dense .sign em{margin-bottom:10mm}
-.stamp{position:absolute;left:30mm;top:166mm;border:1.2mm solid #1a7f37;color:#1a7f37;font-weight:800;font-size:28pt;letter-spacing:.2em;padding:2mm 7mm;transform:rotate(-12deg);opacity:.8;border-radius:3mm}
+.stamp{position:absolute;left:28mm;top:160mm;border:1.2mm solid #1a7f37;color:#1a7f37;font-weight:800;font-size:28pt;letter-spacing:.2em;padding:2mm 7mm;transform:rotate(-12deg);opacity:.8;border-radius:3mm}
 </style></head><body><div class="page${d.terms ? ' dense' : ''}">
 <div class="top"><h1>Invoice</h1><div class="meta">${d.meta.map(([k, v]) => `<div><i>${k}</i><span>${v}</span></div>`).join('')}</div></div>
 ${d.sub ? `<div class="sub">${d.sub}</div>` : ''}
