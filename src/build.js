@@ -130,8 +130,9 @@ h2{font-family:Playfair;font-style:italic;font-weight:500;font-size:17pt;text-tr
 .terms ol{padding-left:6mm;font-size:8pt;line-height:1.6}
 .foot{position:absolute;left:15mm;right:15mm;bottom:10mm;display:flex;justify-content:space-between;border-top:.2mm solid #bbb;padding-top:3.5mm;font-size:6.5pt;letter-spacing:.1em;text-transform:uppercase;color:#666}
 .dense h1{font-size:64pt}.dense .meta{margin-top:5mm}.dense .parties{margin-top:3mm}.dense .blk{margin-bottom:4mm}.dense .rule{margin-bottom:4mm}.dense .logo{width:58mm}.dense table{margin-top:2mm}.dense td{padding:3mm}.dense .extra{margin-top:5mm}.dense .bottom{margin-top:6mm}.dense .terms{margin-top:4mm}.dense .terms ol{font-size:7.5pt;line-height:1.5}.dense h2{font-size:15pt;margin-bottom:3mm}.dense .sign em{margin-bottom:10mm}
+.pf .extra{width:88mm}.pf .extra div{text-transform:uppercase;letter-spacing:.1em}.pf .extra .last{font-weight:600}
 .stamp{position:absolute;left:28mm;top:160mm;border:1.2mm solid #1a7f37;color:#1a7f37;font-weight:800;font-size:28pt;letter-spacing:.2em;padding:2mm 7mm;transform:rotate(-12deg);opacity:.8;border-radius:3mm}
-</style></head><body><div class="page${d.terms ? ' dense' : ''}">
+</style></head><body><div class="page${d.terms ? ' dense' : ''}${d.note ? ' pf' : ''}">
 <div class="top"><h1>Invoice</h1><div class="meta">${d.meta.map(([k, v]) => `<div><i>${k}</i><span>${v}</span></div>`).join('')}</div></div>
 ${d.sub ? `<div class="sub">${d.sub}</div>` : ''}
 <div class="parties"><div style="margin-top:4mm">
