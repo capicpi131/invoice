@@ -3,6 +3,7 @@
 const path = require('path');
 const fs = require('fs');
 const { chromium } = require('playwright');
+const { htmlPF } = require('./proforma');
 
 const root = path.join(__dirname, '..');
 const A = (f) => 'file://' + path.join(root, 'assets', f);
@@ -59,6 +60,7 @@ const invoices = [
   },
   {
     file: 'INV-PI-SBR-211126-01.pdf',
+    layout: 'proforma',
     meta: [['Kategori', 'KAMAR'], ['No.', 'PI/SBR/211126/01'], ['Tanggal', '21.11.2026']],
     sub: 'Proforma · Penawaran Biaya',
     to: ['<b>Ibu Edha</b>', 'Bandara Makassar', 'Check-in: Senin, 23 Nov 2026 (14.00)', 'Check-out: Rabu, 25 Nov 2026 (12.00)'],
@@ -68,7 +70,7 @@ const invoices = [
     totalLabel: 'Total Tagihan',
     total: rp(6600000),
     extra: [['DP (Tanda Jadi)', rp(3000000)], ['Sisa (saat check-in)', rp(3600000), true]],
-    pay: ['Transfer Bank: BRI', 'No. Rek: 025701011852534', 'A.N. A A GEDE EKA PUTRA'],
+    pay: ['Transfer Bank: BRI', '<span class="g">No. Rek:</span> 025701011852534', '<span class="g">A.N.</span> A A GEDE EKA PUTRA'],
     payTitle: 'Informasi Pembayaran',
     note: 'Mohon kirimkan bukti transfer DP sebagai tanda jadi booking.',
     terms: [
@@ -157,7 +159,7 @@ ${d.stamp ? '<div class="stamp">LUNAS</div>' : ''}
   for (const d of invoices) {
     const page = await browser.newPage();
     const tmp = path.join(root, 'src', '_tmp.html');
-    fs.writeFileSync(tmp, html(d));
+    fs.writeFileSync(tmp, d.layout === 'proforma' ? htmlPF(d, A) : html(d));
     await page.goto('file://' + tmp);
     await page.evaluate(() => document.fonts.ready);
     await page.pdf({ path: path.join(root, 'pdf', d.file), preferCSSPageSize: true, printBackground: true, margin: { top: 0, right: 0, bottom: 0, left: 0 } });
