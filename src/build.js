@@ -83,6 +83,31 @@ const invoices = [
     ],
     footerL: 'Terima kasih atas kepercayaan Ibu Edha',
     stamp: false,
+  },  {
+    file: 'INV-PI-SBR-251126-01.pdf',
+    layout: 'proforma',
+    meta: [['Kategori', 'KAMAR'], ['No.', 'PI/SBR/251126/01'], ['Tanggal', '25.11.2026']],
+    sub: 'Proforma · Penawaran Biaya',
+    to: ['<b>drg. Irfan Sugianto</b>', 'Dekan Fakultas Vokasi', 'Check-in: Jumat, 27 Nov 2026 (14.00)', 'Check-out: Senin, 30 Nov 2026 (12.00)'],
+    from: ['<b>SunaRi Beach Resort Selayar</b>', ...seller.addr],
+    head: ['Deskripsi', 'Harga / Malam', 'Unit', 'Malam', 'Jumlah'],
+    rows: [['Standard Bungalow<small>27 – 30 November 2026 · durasi 3 malam</small>', rp(900000), 1, 3, rp(2700000)]],
+    totalLabel: 'Total Tagihan',
+    total: rp(2700000),
+    extra: null, // DP belum ditentukan
+    pay: ['Transfer Bank: BRI', '<span class="g">No. Rek:</span> 025701011852534', '<span class="g">A.N.</span> A A GEDE EKA PUTRA'],
+    payTitle: 'Informasi Pembayaran',
+    note: 'Mohon kirimkan bukti transfer DP sebagai tanda jadi booking.',
+    terms: [
+      'Check-in pukul 14.00 dan check-out pukul 12.00. Late check-out dikenakan biaya tambahan 30% dari harga kamar.',
+      'Early check-in dapat dilakukan sesuai ketersediaan kamar, dengan konfirmasi ke pihak resort.',
+      'Tamu wajib menunjukkan KTP saat check-in.',
+      'Sisa pembayaran dilunasi saat check-in. Metode pembayaran: transfer bank, tunai, atau QRIS/e-wallet.',
+      'Tidak ada pengembalian dana (refund) untuk pembatalan; yang tersedia hanya reschedule dengan kredit berlaku 6 bulan.',
+      'Apabila tamu tidak hadir tanpa kabar (no-show), DP dinyatakan hangus.',
+    ],
+    footerL: 'Terima kasih atas kepercayaan drg. Irfan Sugianto',
+    stamp: false,
   },
 ];
 
